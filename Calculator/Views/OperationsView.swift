@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct OperationsView: View {
+    @Binding var displayValue: String
+    
     var body: some View {
         ZStack {
             Color(red: 0.229, green: 0.229, blue: 0.229)
@@ -15,29 +17,29 @@ struct OperationsView: View {
             GeometryReader { geometry in
                 VStack {
                     HStack {
-                        NumButton(number: 7)
-                        NumButton(number: 8)
-                        NumButton(number: 9)
+                        NumButton(number: 7, displayValue: $displayValue)
+                        NumButton(number: 8, displayValue: $displayValue)
+                        NumButton(number: 9, displayValue: $displayValue)
                         OperatorButton(op: "÷")
                     }
                     HStack {
-                        NumButton(number: 4)
-                        NumButton(number: 5)
-                        NumButton(number: 6)
+                        NumButton(number: 4, displayValue: $displayValue)
+                        NumButton(number: 5, displayValue: $displayValue)
+                        NumButton(number: 6, displayValue: $displayValue)
                         OperatorButton(op: "x")
                     }
                     HStack {
-                        NumButton(number: 1)
-                        NumButton(number: 2)
-                        NumButton(number: 3)
+                        NumButton(number: 1, displayValue: $displayValue)
+                        NumButton(number: 2, displayValue: $displayValue)
+                        NumButton(number: 3, displayValue: $displayValue)
                         OperatorButton(op: "-")
                     }
                     HStack {
-                        NumButton(number: 0)
+                        NumButton(number: 0, displayValue: $displayValue)
                             .frame(width: geometry.size.width * 0.75)
                         OperatorButton(op: "+")
                     }
-                    EqualButton()
+                    EqualButton(displayValue: $displayValue)
                 }
                 .frame(height: geometry.size.width * 1.2)
             }
@@ -51,7 +53,7 @@ struct OperationsView_Previews: PreviewProvider {
         GeometryReader { geometry in
             VStack {
                 Spacer()
-                OperationsView()
+                OperationsView(displayValue: .constant("456"))
                     .frame(height: geometry.size.height * 0.6)
             }
         }

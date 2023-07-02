@@ -11,7 +11,7 @@ struct OperatorButton: View {
     var op: String
     @EnvironmentObject var calculator: Calculator
     
-    var opConversion = ["÷": Calculator.Operator.divide,
+    let opConversion = ["÷": Calculator.Operator.divide,
                         "x": Calculator.Operator.multiply,
                         "+": Calculator.Operator.add,
                         "-": Calculator.Operator.subtract]
@@ -20,6 +20,7 @@ struct OperatorButton: View {
         CalcButton(symbol: op, forgroundColor: .black,
                    background: .green, action: {
             calculator.op = opConversion[op]
+            calculator.numberTwo = 0
         })
     }
 }

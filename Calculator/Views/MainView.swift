@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct MainView: View {
-    @State private var result = 0
+    @EnvironmentObject var calculator: Calculator
+    @State private var displayValue = "0"
     
     var body: some View {
         GeometryReader { geometry in
@@ -16,13 +17,20 @@ struct MainView: View {
                 ZStack {
                     Color.black
                         .ignoresSafeArea()
-                    Text(String(result))
-                        .foregroundColor(.white)
-                        .font(.system(size: 100))
-                        .position(x: geometry.size.width - 50, y: 200)
+                    VStack {
+                        Spacer()
+                            .frame(height: geometry.size.height * 0.2)
+                        HStack {
+                            Spacer()
+                            Text(displayValue)
+                                .foregroundColor(.white)
+                                .font(.system(size: 100))
+                        }
+                        .padding(10)
+                    }
                 }
                 .frame(height: geometry.size.height * 0.4)
-                OperationsView()
+                OperationsView(displayValue: $displayValue)
             }
         }
     }
@@ -31,5 +39,6 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
+            .environmentObject(Calculator())
     }
 }

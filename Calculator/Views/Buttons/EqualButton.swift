@@ -8,16 +8,22 @@
 import SwiftUI
 
 struct EqualButton: View {
+    @Binding var displayValue: String
+    @EnvironmentObject var calculator: Calculator
+    
     var body: some View {
         CalcButton(symbol: "=", forgroundColor: .black,
                    background: .green, action: {
-            
+            if calculator.op != nil {
+                calculator.calculate()
+                displayValue = Util.numToStr(calculator.numberOne)
+            }
         })
     }
 }
 
 struct EqualButton_Previews: PreviewProvider {
     static var previews: some View {
-        EqualButton()
+        EqualButton(displayValue: .constant("0"))
     }
 }
