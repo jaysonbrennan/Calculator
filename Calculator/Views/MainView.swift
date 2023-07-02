@@ -8,12 +8,20 @@
 import SwiftUI
 
 struct MainView: View {
+    @State private var result = 0
+    
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
-                Color.black
-                    .ignoresSafeArea()
-                    .frame(height: geometry.size.height * 0.4)
+                ZStack {
+                    Color.black
+                        .ignoresSafeArea()
+                    Text(String(result))
+                        .foregroundColor(.white)
+                        .font(.system(size: 100))
+                        .position(x: geometry.size.width - 50, y: 200)
+                }
+                .frame(height: geometry.size.height * 0.4)
                 OperationsView()
             }
         }
