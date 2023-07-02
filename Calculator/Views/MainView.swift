@@ -11,7 +11,7 @@ struct MainView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
-                Color.cyan
+                Color.black
                     .ignoresSafeArea()
                     .frame(height: geometry.size.height * 0.4)
                 OperationsView()

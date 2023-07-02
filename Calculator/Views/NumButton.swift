@@ -12,8 +12,8 @@ struct NumButton: View {
     @EnvironmentObject var calculator: Calculator
     
     var body: some View {
-        CalcButton(symbol: String(number), forgroundColor: .white,
-                   background: .cyan, action: {
+        CalcButton(symbol: String(number), forgroundColor: .green,
+                   background: .black, action: {
             if calculator.op == nil {
                 calculator.numberOne = (calculator.numberOne * 10) + number
             } else {

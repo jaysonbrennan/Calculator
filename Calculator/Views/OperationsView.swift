@@ -10,7 +10,7 @@ import SwiftUI
 struct OperationsView: View {
     var body: some View {
         ZStack {
-            Color.gray
+            Color(red: 0.229, green: 0.229, blue: 0.229)
                 .ignoresSafeArea()
             GeometryReader { geometry in
                 VStack {

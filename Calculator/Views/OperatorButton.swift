@@ -17,8 +17,8 @@ struct OperatorButton: View {
                         "-": Calculator.Operator.subtract]
     
     var body: some View {
-        CalcButton(symbol: op, forgroundColor: .pink,
-                   background: .white, action: {
+        CalcButton(symbol: op, forgroundColor: .black,
+                   background: .green, action: {
             calculator.op = opConversion[op]
         })
     }

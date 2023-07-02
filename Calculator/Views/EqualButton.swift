@@ -9,8 +9,8 @@ import SwiftUI
 
 struct EqualButton: View {
     var body: some View {
-        CalcButton(symbol: "=", forgroundColor: .white,
-                   background: .pink, action: {
+        CalcButton(symbol: "=", forgroundColor: .black,
+                   background: .green, action: {
             
         })
     }
