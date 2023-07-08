@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OperatorButton: View {
     var op: String
+    @Binding var rhs: Bool
     @EnvironmentObject var calculator: Calculator
     
     let opConversion = ["÷": Calculator.Operator.divide,
@@ -19,6 +20,7 @@ struct OperatorButton: View {
     var body: some View {
         CalcButton(symbol: op, forgroundColor: .black,
                    background: .green, action: {
+            rhs = true
             calculator.op = opConversion[op]
             calculator.numberTwo = 0
         })
@@ -27,7 +29,7 @@ struct OperatorButton: View {
 
 struct OperatorButton_Previews: PreviewProvider {
     static var previews: some View {
-        OperatorButton(op: "÷")
+        OperatorButton(op: "÷", rhs: .constant(false))
             .environmentObject(Calculator())
     }
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OperationsView: View {
     @Binding var displayValue: String
+    @State private var rhs = false
     
     var body: some View {
         ZStack {
@@ -17,29 +18,39 @@ struct OperationsView: View {
             GeometryReader { geometry in
                 VStack {
                     HStack {
-                        NumButton(number: 7, displayValue: $displayValue)
-                        NumButton(number: 8, displayValue: $displayValue)
-                        NumButton(number: 9, displayValue: $displayValue)
-                        OperatorButton(op: "÷")
+                        NumButton(number: 7, displayValue: $displayValue,
+                                  rhs: $rhs)
+                        NumButton(number: 8, displayValue: $displayValue,
+                                  rhs: $rhs)
+                        NumButton(number: 9, displayValue: $displayValue,
+                                  rhs: $rhs)
+                        OperatorButton(op: "÷", rhs: $rhs)
                     }
                     HStack {
-                        NumButton(number: 4, displayValue: $displayValue)
-                        NumButton(number: 5, displayValue: $displayValue)
-                        NumButton(number: 6, displayValue: $displayValue)
-                        OperatorButton(op: "x")
+                        NumButton(number: 4, displayValue: $displayValue,
+                                  rhs: $rhs)
+                        NumButton(number: 5, displayValue: $displayValue,
+                                  rhs: $rhs)
+                        NumButton(number: 6, displayValue: $displayValue,
+                                  rhs: $rhs)
+                        OperatorButton(op: "x", rhs: $rhs)
                     }
                     HStack {
-                        NumButton(number: 1, displayValue: $displayValue)
-                        NumButton(number: 2, displayValue: $displayValue)
-                        NumButton(number: 3, displayValue: $displayValue)
-                        OperatorButton(op: "-")
+                        NumButton(number: 1, displayValue: $displayValue,
+                                  rhs: $rhs)
+                        NumButton(number: 2, displayValue: $displayValue,
+                                  rhs: $rhs)
+                        NumButton(number: 3, displayValue: $displayValue,
+                                  rhs: $rhs)
+                        OperatorButton(op: "-", rhs: $rhs)
                     }
                     HStack {
-                        NumButton(number: 0, displayValue: $displayValue)
+                        NumButton(number: 0, displayValue: $displayValue,
+                                  rhs: $rhs)
                             .frame(width: geometry.size.width * 0.75)
-                        OperatorButton(op: "+")
+                        OperatorButton(op: "+", rhs: $rhs)
                     }
-                    EqualButton(displayValue: $displayValue)
+                    EqualButton(displayValue: $displayValue, rhs: $rhs)
                 }
                 .frame(height: geometry.size.width * 1.2)
             }
